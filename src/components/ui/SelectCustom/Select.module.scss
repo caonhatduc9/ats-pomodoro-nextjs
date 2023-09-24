@@ -1,0 +1,42 @@
+.wrapper {
+  //   background-color: red;
+  text-align: left;
+  border-radius: 8px;
+  .inner {
+    border-radius: 8px;
+    height: 100%;
+    padding: 8px 0px;
+    width: 100%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 20px,
+      rgba(0, 0, 0, 0.1) 0px 3px 6px;
+    overflow: hidden;
+    .item {
+      cursor: pointer;
+      display: flex;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: center;
+      align-items: center;
+      padding: 8px 18px;
+      &:hover {
+        background-color: rgb(240, 240, 240);
+      }
+      .title {
+        color: rgb(87, 87, 87);
+        font-size: 1.4rem;
+      }
+      .icon {
+        cursor: pointer;
+        display: flex;
+        width: 20px;
+        height: 20px;
+        font-size: 2rem;
+        color: rgba(0, 0, 0, 0.349);
+        &:hover {
+          color: black;
+        }
+      }
+    }
+  }
+}

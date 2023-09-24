@@ -1,0 +1,53 @@
+.input_est_pomodoro {
+  background-color: rgb(239, 239, 239);
+  font-size: 16px;
+  padding: 10px;
+  color: rgb(85, 85, 85);
+  width: 75px;
+  &:last-of-type {
+    margin-right: 10px;
+  }
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+.est-input-act {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  & button {
+    width: 27px !important;
+    height: 18px !important;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:first-of-type {
+      position: absolute;
+      top: -20px;
+      left: -28px;
+    }
+    &:last-of-type {
+      position: absolute;
+      top: -2px;
+      left: -28px;
+    }
+    img {
+      width: 10px;
+      height: 10px;
+    }
+
+    &:active {
+      box-shadow: none;
+    }
+  }
+}

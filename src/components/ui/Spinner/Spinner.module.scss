@@ -1,0 +1,76 @@
+//spinner
+.spinner-wrapper {
+  height: 100vh;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotating 1s linear infinite;
+}
+
+.spinner:before {
+  content: "";
+  position: relative;
+  border-radius: 100%;
+  background: var(--color-spinner);
+  width: var(--size-spinner);
+  height: var(--size-spinner);
+}
+
+.spinner:after {
+  content: "";
+  position: absolute;
+  border-radius: 100%;
+  background: var(--color-page-background);
+  width: var(--size-spinner-in);
+  height: var(--size-spinner-in);
+  animation: sizing 1s ease infinite;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scaling {
+  0% {
+    width: var(--size-spinner-in);
+  }
+
+  50% {
+    width: calc(
+      var(--size-spinner-in) -
+        calc(var(--size-spinner-in) + (100% - var(--max-size-border)))
+    );
+  }
+}
+
+@keyframes sizing {
+  0% {
+    width: var(--size-spinner-in);
+    height: var(--size-spinner-in);
+  }
+
+  50% {
+    width: calc(
+      var(--size-spinner-in) -
+        calc(var(--size-spinner-in) - (100% - var(--max-size-border)))
+    );
+    height: calc(
+      var(--size-spinner-in) -
+        calc(var(--size-spinner-in) - (100% - var(--max-size-border)))
+    );
+  }
+}

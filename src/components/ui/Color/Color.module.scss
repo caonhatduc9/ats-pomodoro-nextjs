@@ -1,0 +1,45 @@
+.color-wrapper {
+  position: relative;
+  & .swatch {
+    padding: 5px;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    user-select: none;
+    width: 24px;
+    height: 24px;
+    height: 2;
+    border-radius: 5px;
+    & .color {
+      width: 36px;
+      height: 14px;
+      border-radius: 2px;
+    }
+  }
+  & .popover {
+    position: absolute;
+    z-index: 2;
+    top: 110%;
+    left: 0;
+    & .cover {
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .color-wrapper {
+    & .popover {
+      left: -200px;
+    }
+  }
+}
