@@ -23,3 +23,5 @@ jobs:
           script: |
             cd /home/duccao/project/guest/ats-pomodoro-nextjs
             ls -la
+            pwd
+            node -v
