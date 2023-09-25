@@ -14,14 +14,14 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
-      - name: executing remote ssh commands using password
+      - name: executing remote ssh
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }} # \
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }} # password login to server
           script: |
-            cd /home/duccao/project/guest/ats-pomodoro-nextjs
-            ls -la
-            pwd
-          run: node -v
+            'cd /home/${{ secrets.SSH_USERNAME }}/project/guest/ats-pomodoro-nextjs
+            ; ls -la
+            ; pwd
+            ; node -v'
