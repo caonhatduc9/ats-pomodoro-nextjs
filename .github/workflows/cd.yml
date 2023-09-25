@@ -16,7 +16,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd /home/duccao/project/guest/ats-web-pomodoro
+            cd  ${{ secrets.WORK_DIR }}
             git pull origin main
             git status
             npm i
