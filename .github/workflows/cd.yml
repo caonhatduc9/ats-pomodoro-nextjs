@@ -17,8 +17,9 @@ jobs:
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST }} #hostname of server
-          username: ${{ secrets.SSH_USERNAME }} #username login to server
-          key: ${{ secrets.SSH_PRIVATE_KEY }} #password login to server
-          script: | # run with multiple script
-            cd /home/duccao/project/guest/ats-pomodoro-nextjs ; node -v
+          host: ${{ secrets.SSH_HOST }} # hostname of server
+          username: ${{ secrets.SSH_USERNAME }} # username login to server
+          key: ${{ secrets.SSH_PRIVATE_KEY }} # password login to server
+          script: |
+            cd /home/duccao/project/guest/ats-pomodoro-nextjs
+            node -v
