@@ -21,7 +21,5 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }} # password login to server
           script: |
-            'cd /home/${{ secrets.SSH_USERNAME }}/project/guest/ats-pomodoro-nextjs
-            ; ls -la
-            ; pwd
-            ; node -v'
+            cd /home/${{ secrets.SSH_USERNAME }}/project/guest/ats-pomodoro-nextjs
+            whoami
