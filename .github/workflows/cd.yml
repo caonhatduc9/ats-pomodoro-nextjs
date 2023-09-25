@@ -24,3 +24,6 @@ jobs:
           port: 22
           script: |
             cd /home/duccao/project/guest/ats-pomodoro-nextjs
+            git pull origin main
+            npm install
+            pm2 reload test-cd
