@@ -27,4 +27,4 @@ jobs:
             git pull origin main
             npm install
             npm run build
-            pm2 reload test-cd
+           # pm2 reload test-cd
