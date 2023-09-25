@@ -14,16 +14,11 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
-
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
         with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: "unnecessary"
-
-      - name: Add VPS Host Key to Known Hosts
-        run: echo "$({{ secrets.SSH_HOST }} ssh-keyscan -t rsa)" >> ~/.ssh/known_hosts
-
-      - name: SSH into VPS and Build
-        run: |
-          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'cd ${{ secrets.WORK_DIR }} && git pull origin main && npm install && npm run build'
+          host: ${{ secrets.SSH_HOST }} #hostname of server
+          username: ${{ secrets.SSH_USERNAME }} #username login to server
+          key: ${{ secrets.SSH_PRIVATE_KEY }} #password login to server
+          script: | # run with multiple script
+            ls -la
