@@ -21,6 +21,5 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} #username login to server
           key: ${{ secrets.SSH_PRIVATE_KEY }} #password login to server
           script: | # run with multiple script
-            ls -la
-            cd /home/project/guest/
+            cd /home/duccao/project/guest
             ls -la
