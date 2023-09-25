@@ -26,4 +26,5 @@ jobs:
             cd /home/duccao/project/guest/ats-pomodoro-nextjs
             git pull origin main
             npm install
+            npm run build
             pm2 reload test-cd
