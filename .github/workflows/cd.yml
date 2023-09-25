@@ -1,26 +1,35 @@
-name: Deploy Next App
+name: Build and Deploy
+
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
-    env:
-      SSH_KEY: ${{secrets.SSH_PRIVATE_KEY}}
     steps:
-      - uses: actions/checkout@master
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Checkout Main Branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: node -v
-      # - run: mkdir ~/.ssh
-      # - run: echo "$SSH_KEY" >> ~/.ssh/github-action
-      # - run: chmod 400 ~/.ssh/github-action
-      # - run: echo -e "Host vps\n\tUser root\n\tHostname 11.000.000.111\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
-      # - run: rsync -re ssh ./.next/ vps:/home/root/app-name/.next
-      # - run: ssh vps "pm2 restart app-name"
+          node-version: "18.x"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Website
+        run: npm run build
+
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: "unnecessary"
+
+      - name: Deploy with rsync
+        run: rsync -avz --delete . ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_DIR }}
