@@ -21,4 +21,4 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} #username login to server
           key: ${{ secrets.SSH_PRIVATE_KEY }} #password login to server
           script: | # run with multiple script
-            cd /home/duccao/project/guest/ats-pomodoro-nextjs ; npm install ; npm run build
+            cd /home/duccao/project/guest/ats-pomodoro-nextjs ; node -v
