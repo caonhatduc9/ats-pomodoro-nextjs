@@ -18,8 +18,8 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }} # \
-          username: ${{ secrets.SSH_USERNAME }}
+          username: duccao
           key: ${{ secrets.SSH_PRIVATE_KEY }} # password login to server
           script: |
-            cd /home/${{ secrets.SSH_USERNAME }}/project/guest/ats-pomodoro-nextjs
+            cd /home/duccao/project/guest/ats-pomodoro-nextjs
             whoami
