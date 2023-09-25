@@ -1,5 +1,4 @@
 name: Build and Deploy
-
 on:
   push:
     branches:
@@ -17,9 +16,9 @@ jobs:
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST }} # hostname of server
-          username: ${{ secrets.SSH_USERNAME }} # username login to server
-          key: ${{ secrets.SSH_PRIVATE_KEY }} # password login to server
+          host: 157.230.242.237 # \
+          username: duccao
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/duccao/project/guest/ats-pomodoro-nextjs
+            cd /home
             node -v
