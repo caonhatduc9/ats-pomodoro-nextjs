@@ -15,11 +15,5 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          script: |
-            cd  ${{ secrets.WORK_DIR }}
-            git pull origin main
-            git status
-            npm i
-            rm -rf .next
-            npm run build
-            pm2 restart test-cd
+      - name: build
+        run:  cd ${{ secrets.WORK_DIR }} ; git pull origin main ; npm i ; npm run build ; pm2 restart test-cd
