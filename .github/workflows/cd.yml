@@ -22,3 +22,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }} #password login to server
           script: | # run with multiple script
             ls -la
+            cd ${{ secrets.WORK_DIR }}
