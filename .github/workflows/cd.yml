@@ -16,4 +16,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
       - name: build
-        run:  cd ${{ secrets.WORK_DIR }} ; git pull origin main ; npm i ; npm run build ; pm2 restart test-cd
+        run: cd /home/duccao/project/guest/ats-pomodoro-nextjs ; git pull origin main ; npm i ; npm run build ; pm2 restart test-cd
