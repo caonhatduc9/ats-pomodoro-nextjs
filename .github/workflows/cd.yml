@@ -21,6 +21,9 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: "unnecessary"
 
+      - name: Add VPS Host Key to Known Hosts
+        run: echo "$({{ secrets.SSH_HOST }} ssh-keyscan -t rsa)" >> ~/.ssh/known_hosts
+
       - name: SSH into VPS and Build
         run: |
-          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'cd ${{ secrets.WORK_DIR }} && git pull origin main && npm install && npm run build'
+          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'cd ${{ secrets.WORK_DIR }} && git pull origin main && npm install && npm run build'
