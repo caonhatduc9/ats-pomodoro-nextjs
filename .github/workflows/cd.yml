@@ -1,25 +1,25 @@
-name: Auto Deploy
-
+name: Deployment Workflow
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-
-      - name: SSH Deploy
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-        run: |
-          if [ $GITHUB_REF = "refs/heads/dev_v2_son" ]; then
-            "cd /path/to/your/app && git pull origin staging && npm install && npm run build && pm2 reload your-staging-app"
-          elif [ $GITHUB_REF = "refs/heads/main" ]; then
-            "cd /home/duccao/project/guest/ats-web-pomodoro && git pull origin main && npm install && npm run build && pm2 reload test-cd"
-          fi
+      - name: SSH to server
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /home/duccao/project/guest/ats-web-pomodoro
+            git pull origin main
+            git status
+            npm i
+            rm -rf .next
+            npm run build
+            pm2 restart test-cd
