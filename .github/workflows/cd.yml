@@ -23,4 +23,5 @@ jobs:
           script: |
             cd /home/duccao/project/guest/ats-pomodoro-nextjs
             git pull
-            git log
+            /home/duccao/.nvm/versions/node/v18.16.0/bin/node -v
+
