@@ -22,7 +22,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }} # password login to server
           script: |
             export NVM_DIR=~/.nvm
-            ource ~/.nvm/nvm.sh
+            source ~/.nvm/nvm.sh
             node -v
           #  /home/duccao/.nvm/versions/node/v18.16.0/bin/npm i
           #  /home/duccao/.nvm/versions/node/v18.16.0/bin/npm run build
