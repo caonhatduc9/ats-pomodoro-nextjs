@@ -21,6 +21,7 @@ jobs:
           username: duccao
           key: ${{ secrets.SSH_PRIVATE_KEY }} # password login to server
           script: |
+            su -l duccao
             cd /home/duccao/project/guest/ats-pomodoro-nextjs
             whoami
             sudo -u duccao node -v
