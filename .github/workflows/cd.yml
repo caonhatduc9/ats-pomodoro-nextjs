@@ -21,11 +21,7 @@ jobs:
           username: duccao
           key: ${{ secrets.SSH_PRIVATE_KEY }} # password login to server
           script: |
-            export NVM_DIR=~/.nvm
-            source ~/.nvm/nvm.sh
-            node -v
-            npm -v
-            pm2 -v
-          #  /home/duccao/.nvm/versions/node/v18.16.0/bin/npm i
-          #  /home/duccao/.nvm/versions/node/v18.16.0/bin/npm run build
-          #  /home/duccao/.nvm/versions/node/v18.16.0/bin/pm2 reload test-cd
+            git pull
+            npm i
+            npm run build
+            pm2 reload test-cd
