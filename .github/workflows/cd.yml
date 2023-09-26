@@ -22,5 +22,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }} # password login to server
           script: |
             cd /home/duccao/project/guest/ats-pomodoro-nextjs
-            whoami
-            node -v
+            git pull
+            git log
