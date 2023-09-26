@@ -15,16 +15,11 @@ jobs:
           fetch-depth: 0
           ref: main
       - name: executing remote ssh
-        uses: appleboy/ssh-action@master
+        uses: fifsky/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST }} # \
-          username: duccao
-          key: ${{ secrets.SSH_PRIVATE_KEY }} # password login to server
-          script: |
-            cd /home/duccao/project/guest/ats-pomodoro-nextjs
-            git pull
-            /home/duccao/.nvm/versions/node/v18.16.0/bin/node -v
-            /home/duccao/.nvm/versions/node/v18.16.0/bin/npm -v
-          #  /home/duccao/.nvm/versions/node/v18.16.0/bin/npm i
-          #  /home/duccao/.nvm/versions/node/v18.16.0/bin/npm run build
-          #  /home/duccao/.nvm/versions/node/v18.16.0/bin/pm2 reload test-cd
+          command: |
+            ls -la
+            node -v
+          host: ${{ secrets.SSH_HOST }}
+          user: duccao
+          key: ${{ secrets.SSH_PRIVATE_KEY}}
