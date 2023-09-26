@@ -15,11 +15,15 @@ jobs:
           fetch-depth: 0
           ref: main
       - name: executing remote ssh
-        uses: fifsky/ssh-action@master
+        uses: appleboy/ssh-action@master
         with:
-          command: |
-            ls -la
+          host: ${{ secrets.SSH_HOST }} # \
+          username: duccao
+          key: ${{ secrets.SSH_PRIVATE_KEY }} # password login to server
+          script: |
+            export NVM_DIR=~/.nvm
+            ource ~/.nvm/nvm.sh
             node -v
-          host: ${{ secrets.SSH_HOST }}
-          user: duccao
-          key: ${{ secrets.SSH_PRIVATE_KEY}}
+          #  /home/duccao/.nvm/versions/node/v18.16.0/bin/npm i
+          #  /home/duccao/.nvm/versions/node/v18.16.0/bin/npm run build
+          #  /home/duccao/.nvm/versions/node/v18.16.0/bin/pm2 reload test-cd
