@@ -24,6 +24,7 @@ jobs:
             cd /home/duccao/project/guest/ats-pomodoro-nextjs
             git pull
             /home/duccao/.nvm/versions/node/v18.16.0/bin/node -v
-            /home/duccao/.nvm/versions/node/v18.16.0/bin/npm i
-            /home/duccao/.nvm/versions/node/v18.16.0/bin/npm run build
-            /home/duccao/.nvm/versions/node/v18.16.0/bin/pm2 reload test-cd
+            /home/duccao/.nvm/versions/node/v18.16.0/bin/npm -v
+          #  /home/duccao/.nvm/versions/node/v18.16.0/bin/npm i
+          #  /home/duccao/.nvm/versions/node/v18.16.0/bin/npm run build
+          #  /home/duccao/.nvm/versions/node/v18.16.0/bin/pm2 reload test-cd
