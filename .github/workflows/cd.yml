@@ -18,11 +18,13 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }} # \
-          username: duccao
+          username: ${{ secrets.SSH_USERNAME }} # |-> login to server
           key: ${{ secrets.SSH_PRIVATE_KEY }} # password login to server
           script: |
-            cd  /home/duccao/project/guest/ats-pomodoro-nextjs/
+            cd  ${{ secrets.SSH_PATH }}
+            ls -la
+            git status
             git pull
             npm i
             npm run build
-            pm2 reload test-cd
+            pm2 reload ${{ secrets.PM2_PROCESS_NAME}}
