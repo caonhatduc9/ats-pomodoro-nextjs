@@ -21,14 +21,10 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} # |-> login to server
           key: ${{ secrets.SSH_PRIVATE_KEY }} # password login to server
           script: |
-            # if [ $GITHUB_REF = "refs/heads/test" ]; then
-              cd  ${{ secrets.SSH_PATH }}
-              ls -la
-              git status
-              git pull
-              npm i
-              npm run build
-              pm2 reload ${{ secrets.PM2_PROCESS_NAME}}
-            # else
-              # echo "Not on test branch, skipping deployment"
-            # fi
+            cd  ${{ secrets.SSH_PATH }}
+            ls -la
+            git status
+            git pull
+            npm i
+            npm run build
+            pm2 reload ${{ secrets.PM2_PROCESS_NAME}}
