@@ -22,7 +22,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} # |-> login to server
           key: ${{ secrets.SSH_PRIVATE_KEY }} # password login to server
           script: |
-            if [ "$GITHUB_REF" = "refs/heads/main" ]; then
+            if [[ $GITHUB_REF = "refs/heads/main" ]]; then
               cd  ${{ secrets.SSH_PATH_MAIN }}
               ls -la
               git status
@@ -30,7 +30,7 @@ jobs:
               npm i
               npm run build
               pm2 reload ${{ secrets.PM2_PROCESS_NAME_MAIN}}
-            elif [ "$GITHUB_REF" = "refs/heads/test" ]; then
+            elif [[ $GITHUB_REF = "refs/heads/test" ]]; then
               cd  ${{ secrets.SSH_PATH_TEST }}
               ls -la
               git status
